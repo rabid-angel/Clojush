@@ -2,4 +2,13 @@ We wanted our program to tell us what season it is based on two inputs, the numb
 
 We set up this problem by giving the program the set of materials from the problem description (7, 10, 13, 15, G, Y, R, N, Winter, Spring, Summer, Fall) as well as boolean, integer, string stacks, and exec-if. We looked for our answer as the top of the string stack. We setup test cases for every possible valid daylight and leaf color pair to test against.
 
-Our initial runs of the program continued to simplify to just guessing Spring, as it was an easy guess and answered 1/4 of the test cases correctly. 
+Our initial runs of the program continued to simplify to just guessing Spring, as it was an easy guess and answered 1/4 of the test cases correctly. We applied several tweaks in order to change this behavior, such as:
+provided exec-if 10 times to promote using if's
+Removed 7 as a inital numerical constant as its not very relavant compared to 10 and 13
+Copied the leaf colors and daylight hours provided in the initial set three times over
+Added a 1000 penalty for not returning a string (although Nic did this part)
+Provided random numbers from 0 to 23
+Changed population size to 1000, up from 500
+Modified the test cases so that each month had an equal number of tests for it
+
+Looking at the close-to-final runs of our program, an evolution pattern appeared. First, it could correctly identify a singular season, usually either Winter or Summer since they have conditions that don't require leaf-color. Then, it would find the Winter/Summer divide by hours and have half the tests complete. From here, problems would occur. Since leaf color was not important in finding Winter and Summer, the program would now be stuck when attempting to figure our the difference between Spring and Fall. Since they share the same daylight-hour space, the program might guess either all Spring, or all Fall, or a mix of Spring means 10-11 hours, and Fall means 12 hours. Given more run time or a better system of error, our program may have been able to solve the problem, but in our case it could not generate that final distinction.
